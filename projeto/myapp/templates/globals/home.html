@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; text-align: center;">
+    <h1>Bem Vindo ao Cadastro de EPI</h1>
+
+    <p style="font-size: 1.5em; font-weight: bold; color: #ff5722; animation: colorChange 2s infinite;">
+        Não se esqueça de usar seus EPIs todos os dias!
+    </p>
+</div>
+
+<style>
+    @keyframes colorChange {
+        0% { color: #ff5722; }
+        25% { color: #ff9800; }
+        50% { color: #4caf50; }
+        75% { color: #2196f3; }
+        100% { color: #ff5722; }
+    }
+</style>
+{% endblock content %}

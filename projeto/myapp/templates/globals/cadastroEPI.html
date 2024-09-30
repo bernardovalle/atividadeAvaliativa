@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+
+{% block title %}Cadastro de EPI{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg" style="max-width: 650px; margin: auto; border-radius: 20px; border: 2px solid #4CAF50;">
+        <div class="card-header text-white text-center py-4" style="background-color: #4CAF50; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+            <h2>Cadastrar Equipamento de Proteção Individual</h2>
+        </div>
+        <div class="card-body p-5">
+            <form action="/cadastroEPI/" method="POST">
+                {% csrf_token %}
+                
+                <div class="form-group mb-4">
+                    <label for="nome" class="font-weight-bold">Nome do EPI:</label>
+                    <input type="text" class="form-control" name="nome" placeholder="Digite o nome do EPI" required>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label for="descricao" class="font-weight-bold">Descrição:</label>
+                    <textarea class="form-control" name="descricao" rows="3" placeholder="Descreva o EPI (ex: material, uso, etc.)" required></textarea>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label for="ca" class="font-weight-bold">CA (Certificado de Aprovação):</label>
+                    <input type="text" class="form-control" name="ca" placeholder="Digite o número do CA" required>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label for="tipo" class="font-weight-bold">Tipo de EPI:</label>
+                    <select class="form-control" name="tipo" required>
+                        <option value="" disabled selected>Selecione o tipo de EPI</option>
+                        <option value="capacete">Capacete</option>
+                        <option value="luvas">Luvas</option>
+                        <option value="calçado">Calçado de Segurança</option>
+                        <option value="óculos">Óculos de Proteção</option>
+                        <option value="máscara">Máscara</option>
+                        <option value="calçado">Calçado</option>
+                        <!-- Adicionar mais opções conforme necessário -->
+                    </select>
+                </div>
+
+                <div class="text-center mt-5">
+                    <button type="submit" class="btn btn-success btn-lg px-5 rounded-pill">Cadastrar EPI</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

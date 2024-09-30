@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+
+{% block title %}Lista Epi{% endblock title %}
+
+{% block content %}
+<div class="container justify-content-center mt-5">
+    <h1 class="text-center display-4 font-weight-bold">Lista de EPIs</h1>
+    <hr class="mb-4" style="border-top: 3px solid #6c757d; width: 50%; margin: 0 auto;">
+
+    <form action="{% url 'listar_epi' %}" method="get" class="d-flex justify-content-center mt-3">
+       <input type="text" id="nome" name="nome" class="form-control w-50" placeholder="Buscar por nome...">
+       <button type="submit" class="btn btn-primary ml-2">Buscar</button>
+    </form>
+</div>
+
+{% if lista_epis %}
+<div class="container mt-4">
+    <table class="table table-hover table-bordered text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">CA</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for epi in lista_epis %}
+            <tr>
+                <td>{{ epi.nome }}</td>
+                <td>{{ epi.descricao }}</td>
+                <td>{{ epi.ca }}</td>
+                <td>{{ epi.tipo }}</td>
+                <td>{{ epi.status }}</td>
+                <td>
+                    <a class="btn btn-outline-danger btn-sm rounded-pill px-3" href="/deletarepi/{{ epi.id }}">Deletar</a>
+                    <a class="btn btn-outline-warning btn-sm rounded-pill px-3 ml-2" href="/atualizarEPI/{{ epi.id }}">Atualizar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="container mt-5">
+    <p class="text-center h4 text-muted">Nenhum registro encontrado.</p>
+</div>
+{% endif %}
+{% endblock content %}
